@@ -26,6 +26,18 @@ public class HashTableTest {
     }
 
     @Test
+    public void testRemoveGood() {
+        table.put("one", "number 1");
+        table.put("two", "number 2");
+        table.put("three", "number 3");
+
+        String expected = "number 2";
+        String result = table.remove("two");
+
+        assertEquals(expected, result);
+    }
+
+    @Test
     public void testSizeDuplicateGood() {
         table.put("one", "number 1");
         table.put("two", "number 2");

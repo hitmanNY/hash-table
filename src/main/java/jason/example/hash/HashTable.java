@@ -36,6 +36,28 @@ public class HashTable {
         }
     }
 
+    public String remove(String key) {
+        String result = null;
+
+        if (key == null || key.isEmpty()) {
+            return result;
+        }
+
+        int hash = key.hashCode() & 0x7fffffff % MAX;
+        HashRecord entry = table[hash];
+
+        while (entry != null) {
+            if (entry.getKey().equals(key)) {
+                table[hash] = null;
+                return entry.getValue();
+            }
+
+            entry = entry.getNext();
+        }
+
+        return result;
+    }
+
     public String get(String key) {
         String result = null;
 
